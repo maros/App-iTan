@@ -8,8 +8,9 @@ use 5.0100;
 extends qw(MooseX::App::Cmd);
 with qw(MooseX::Getopt);
 
+use version;
 use vars qw($VERSION);
-$VERSION = '1.00';
+$VERSION = version->new('0.9000_01');
 
 =head1 NAME 
 
