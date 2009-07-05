@@ -1,0 +1,110 @@
+NAME
+    App::iTan - Manage iTans for online banking
+
+SYNOPSIS
+     # Import a list of itans
+     itan.pl import --file itanlist.txt
+     # Fetch an itan and mark it as used
+     itan.pl get --index 15 --memo "Electricity bill 07/2009"
+     # List all itans
+     itan.pl list
+
+DESCRIPTION
+    This command line application facilitates the handling of iTANs (indexed
+    Transaction Numbers) as used by various online banking tools.
+
+COMMANDS
+  import
+    Imports a list of iTans into the database.
+
+     itan.pl import --file IMPORT_FILE [--deletefile] [--overwrite]
+
+    *   file
+
+        Path to a file containing the iTans to be imported. The file must
+        contain two columns (separated by any non numeric characters). The
+        first column must be the index number. The second column must be the
+        tan number. If your online banking appication does not use index
+        numbers just set the first column to zero.
+
+         10 434167
+         11 937102
+         OR
+         0 320791
+         0 823602
+
+    *   deletefile
+
+        Delete import file after a successful import
+
+    *   overwrite
+
+        Index numbers must be unique. Default behaviour is to skip duplicate
+        iTan indices. When this flag is enabled the duplicate iTans will be
+        overwritten.
+
+  get
+    Fetches an iTan an marks it as used
+
+     itan.pl get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
+
+    *   next
+
+        Fetches the next available iTan
+
+    *   index
+
+        Fetches the iTan with the given index
+
+    *   lowerinvalid
+
+        Marks all iTans lower than --index as invalid (Only in conjunction
+        with --index).
+
+    *   memo
+
+        Memo on iTan usage
+
+  info
+    Returns information on the given iTan.
+
+     itan.pl info --index INDEX
+
+    *   index
+
+        Fetches the iTan with the given index
+
+  list
+    List of all either used or still available iTans
+
+     itan.pl list
+
+  reset
+    Mark all unused iTans as invalid
+
+  delete
+    Delete all invalid iTans
+
+SUPPORT
+    Please report any bugs or feature requests to "app-itan@rt.cpan.org", or
+    through the web interface at
+    <http://rt.cpan.org/Public/Bug/Report.html?Queue=App::iTan>. I will be
+    notified and then you'll automatically be notified of the progress on
+    your report as I make changes.
+
+AUTHOR
+        Maroš Kollár
+        CPAN ID: MAROS
+        maros [at] k-1.com
+    
+        L<http://www.k-1.com>
+
+COPYRIGHT
+    App::iTan is Copyright (c) 2009, Maroš Kollár - <http://www.k-1.com>
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+    The full text of the license can be found in the LICENSE file included
+    with this module.
+

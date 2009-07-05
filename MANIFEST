@@ -9,6 +9,7 @@ inc/Module/Install/Metadata.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/App/iTan.pm
+lib/App/iTan/Command/delete.pm
 lib/App/iTan/Command/get.pm
 lib/App/iTan/Command/import.pm
 lib/App/iTan/Command/info.pm
@@ -21,6 +22,11 @@ MANIFEST			This list of files
 META.yml
 t/00_load.t
 t/01_import.t
+t/02_get.t
+t/03_utils.t
+t/itanlist_index.txt
+t/itanlist_noindex.txt
+t/testdb
 xt/perlcritic.t
 xt/pod.t
 xt/podcoverage.t
