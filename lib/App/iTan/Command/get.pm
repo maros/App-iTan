@@ -20,10 +20,10 @@ has 'index' => (
     documentation => q[iTan index number that should be fetched],
 );
 
-has 'lowerused' => (
+has 'lowerinvalid' => (
     is      => 'ro',
     isa     => 'Bool',
-    documentation => q[Mark all iTans with a lower index as used (only in combination with --index)],
+    documentation => q[Mark all iTans with a lower index as invalid (only in combination with --index)],
 );
 
 has 'memo' => (
@@ -53,7 +53,7 @@ sub run {
         say 'iTAN '.$self->index.' marked as used';
         say 'iTAN '.$itan;
         $self->mark($self->index,$self->memo);
-        if ($self->lowerused) {
+        if ($self->lowerinvalid) {
             $self->dbh->do('UPDATE itan SET valid = 0 WHERE tindex < '.$self->index)
                  or die "ERROR: Cannot execute: " . $self->dbh->errstr();
         }

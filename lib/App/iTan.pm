@@ -33,23 +33,91 @@ Transaction Numbers) as used by various online banking tools.
 
 =head2 import
 
-TODO
+Imports a list of iTans into the database. 
+
+ itan.pl import --file IMPORT_FILE [--deletefile] [--overwrite]
+
+=over
+
+=item * file
+
+Path to a file containing the iTans to be imported. The file must contain
+two columns (separated by any non numeric characters). The first 
+column must be the index number. The second column must be the tan 
+number. If your online banking appication does not use index numbers just set
+the first column to zero.
+
+ 10 434167
+ 11 937102
+ OR
+ 0 320791
+ 0 823602
+
+=item * deletefile
+
+Delete import file after a successful import
+
+=item * overwrite 
+
+Index numbers must be unique. Default behaviour is to skip duplicate iTan
+indices. When this flag is enabled the duplicate iTans will be overwritten.
+
+=back
 
 =head2 get
 
-TODO
+Fetches an iTan an marks it as used
+
+ itan.pl get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
+
+=over
+
+=item * next
+
+Fetches the next available iTan
+
+=item * index
+
+Fetches the iTan with the given index
+
+=item * lowerinvalid
+
+Marks all iTans lower than --index as invalid (Only in conjunction with
+--index).
+
+=item * memo
+
+Memo on iTan usage
+
+=back
 
 =head2 info
 
-TODO
+Returns information on the given iTan.
+
+ itan.pl info --index INDEX
+ 
+=over
+
+=item * index
+
+Fetches the iTan with the given index
+
+=back
 
 =head2 list
 
-TODO
+List of all either used or still available iTans
+
+ itan.pl list
 
 =head2 reset
 
-TODO
+Mark all unused iTans as invalid
+
+=head2 delete
+
+Delete all invalid iTans
 
 =head1 SUPPORT
 

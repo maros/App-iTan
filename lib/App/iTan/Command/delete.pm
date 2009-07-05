@@ -1,5 +1,5 @@
 # ================================================================
-package App::iTan::Command::reset;
+package App::iTan::Command::delete;
 # ================================================================
 use utf8;
 use Moose;
@@ -11,9 +11,9 @@ with qw(App::iTan::Utils);
 sub run {
     my ($self) = @_;
     
-    say 'All unused iTAN have been marked as invalid';
+    say 'All unused iTAN have been deleted';
     
-    $self->dbh->do('UPDATE itan SET valid = 0')
+    $self->dbh->do('DELETE FROM itan WHERE valid = 0 AND used IS NULL')
          or die "ERROR: Cannot execute: " . $self->dbh->errstr();
     
     return;
@@ -21,7 +21,7 @@ sub run {
 
 =head1 NAME 
 
-App::iTan::Command::reset - Mark all unused tans as invalid
+App::iTan::Command::delete - Delete all invalid iTans
 
 =head1 DESCRIPTION
 
