@@ -18,7 +18,10 @@ requires        'MooseX::App::Cmd'      => 0;
 requires        'Params::Coerce'        => 0;
 requires        'Path::Class'           => 0;
 requires        'Text::Table'           => 0;
-build_requires  'Test::NoWarnings'      => 0;
+
+build_requires  'File::Temp'            => 0;
+
+install_script 'bin/itan.pl';
 
 repository 'git://github.com/maros/App-iTan.git';
 
