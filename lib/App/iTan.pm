@@ -10,7 +10,7 @@ with qw(MooseX::Getopt);
 
 use version;
 use vars qw($VERSION);
-$VERSION = version->new('0.9000_01');
+$VERSION = version->new('0.9000_02');
 
 =head1 NAME 
 

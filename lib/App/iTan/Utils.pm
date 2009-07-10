@@ -13,7 +13,7 @@ use DBI;
 use Crypt::Twofish;
 use DateTime;
 
-=head1 NAME 
+=head1 NAME
 
 App::iTan::Utils - Utility methods
 

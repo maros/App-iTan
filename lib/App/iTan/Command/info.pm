@@ -5,6 +5,8 @@ use utf8;
 use Moose;
 use 5.0100;
 
+our $VERSION = $App::iTan::VERSION;
+
 extends qw(MooseX::App::Cmd::Command);
 with qw(App::iTan::Utils);
 
@@ -54,7 +56,10 @@ sub run {
 =head1 NAME 
 
 App::iTan::Command::info - Fetch info for a tan index number
+
 =head1 DESCRIPTION
+
+See L<App::iTan> for detailed documentation
 
 =cut
 
