@@ -14,21 +14,27 @@ $VERSION = version->new('0.9000_02');
 
 =head1 NAME 
 
-App::iTan - Manage iTans for online banking
+App::iTan - Secure management of iTans for online banking
 
 =head1 SYNOPSIS
 
  # Import a list of itans
- itan.pl import --file itanlist.txt
- # Fetch an itan and mark it as used
- itan.pl get --index 15 --memo "Electricity bill 07/2009"
+ console$ itan import --file itanlist.txt
+
+ # Fetch an itan and mark it as used (after
+ console$ itan get --index 15 --memo "Electricity bill 07/2009"
+
  # List all itans
- itan.pl list
+ console$ itan list
 
 =head1 DESCRIPTION
 
-This command line application facilitates the handling of iTANs (indexed
-Transaction Numbers) as used by various online banking tools.
+This command line application facilitates the secure handling of iTANs 
+(indexed Transaction Numbers) as used by various online banking tools. 
+
+iTANs are encrypted using L<Crypt::Twofish> and are by default stored 
+in a SQLite database located at ~/.itan. Other database vendors and/or
+storage locations are possible
 
 =head1 COMMANDS
 
@@ -36,7 +42,7 @@ Transaction Numbers) as used by various online banking tools.
 
 Imports a list of iTans into the database. 
 
- itan.pl import --file IMPORT_FILE [--deletefile] [--overwrite]
+ itan import --file IMPORT_FILE [--deletefile] [--overwrite]
 
 =over
 
@@ -69,7 +75,9 @@ indices. When this flag is enabled the duplicate iTans will be overwritten.
 
 Fetches an iTan an marks it as used
 
- itan.pl get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
+ itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
+
+You will be prompted a password to decrypt the selected iTan.
 
 =over
 
@@ -96,8 +104,10 @@ Memo on iTan usage
 
 Returns information on the given iTan.
 
- itan.pl info --index INDEX
- 
+ itan info --index INDEX
+
+You will be promted a password to decrypt the selected iTan.
+
 =over
 
 =item * index
@@ -110,7 +120,7 @@ Fetches the iTan with the given index
 
 List of all either used or still available iTans
 
- itan.pl list
+ itan list
 
 =head2 reset
 
@@ -119,6 +129,19 @@ Mark all unused iTans as invalid
 =head2 delete
 
 Delete all invalid iTans
+
+=head2 help
+
+ itan help 
+ itan help COMMAND
+
+Display help text.
+
+=head2 commands
+
+ itan commands 
+
+Display a list of all available commands
 
 =head1 SUPPORT
 
@@ -136,7 +159,7 @@ on your report as I make changes.
     
     L<http://www.k-1.com>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT & LICENSE
 
 App::iTan is Copyright (c) 2009, Maroš Kollár 
 - L<http://www.k-1.com>
