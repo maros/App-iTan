@@ -21,7 +21,7 @@ requires        'Text::Table'           => 0;
 
 build_requires  'File::Temp'            => 0;
 
-install_script 'bin/itan.pl';
+install_script 'bin/itan';
 
 repository 'git://github.com/maros/App-iTan.git';
 
