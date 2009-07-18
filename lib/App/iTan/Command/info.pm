@@ -41,7 +41,6 @@ sub run {
             $tan_data->{valid},
             $self->_decrypt_string( $tan_data->{itan} ),
             $tan_data->{imported},
-            $tan_data->{imported},
             $tan_data->{used},
             $tan_data->{memo} );
     }
