@@ -9,12 +9,14 @@ extends qw(MooseX::App::Cmd);
 with qw(MooseX::Getopt);
 
 use version;
-use vars qw($VERSION);
-$VERSION = version->new('0.9000_02');
+our $VERSION = version->new('1.00');
+our $AUTHORITY = 'cpan:MAROS';
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 NAME 
 
-App::iTan - Secure management of iTans for online banking
+App::iTan - Secure management of iTans for online banking from
 
 =head1 SYNOPSIS
 
@@ -22,7 +24,7 @@ App::iTan - Secure management of iTans for online banking
  console$ itan import --file itanlist.txt
 
  # Fetch an itan and mark it as used (after
- console$ itan get --index 15 --memo "Electricity bill 07/2009"
+ console$ itan get --index 15 --memo "paid rent 09/2009"
 
  # List all itans
  console$ itan list
@@ -33,8 +35,8 @@ This command line application facilitates the secure handling of iTANs
 (indexed Transaction Numbers) as used by various online banking tools. 
 
 iTANs are encrypted using L<Crypt::Twofish> and are by default stored 
-in a SQLite database located at ~/.itan. Other database vendors and/or
-storage locations are possible
+in a SQLite database located at ~/.itan. (Patches for other database
+vendors welcome)
 
 =head1 COMMANDS
 
@@ -62,7 +64,7 @@ the first column to zero.
 
 =item * deletefile
 
-Delete import file after a successful import
+Option to delete the import file after a successful import
 
 =item * overwrite 
 
@@ -73,7 +75,7 @@ indices. When this flag is enabled the duplicate iTans will be overwritten.
 
 =head2 get
 
-Fetches an iTan an marks it as used
+Fetches an iTan an mark it as used
 
  itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
 
@@ -96,7 +98,7 @@ Marks all iTans lower than --index as invalid (Only in conjunction with
 
 =item * memo
 
-Memo on iTan usage
+Optional memo on iTan usage
 
 =back
 

@@ -64,7 +64,6 @@ has 'database' => (
     },
 );
 
-
 has 'dbh' => (
     is      => 'ro',
     traits  => ['NoGetopt'],
