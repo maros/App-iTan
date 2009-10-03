@@ -34,8 +34,8 @@ has 'memo' => (
     documentation => q[Optional memo for the iTan usage],
 );
 
-sub run {
-    my ($self) = @_;
+sub execute {
+    my ( $self, $opts, $args ) = @_;
     
     if ($self->next) {
         my ($index) = $self->dbh->selectrow_array("SELECT tindex FROM itan WHERE used IS NULL AND valid = 1 ORDER BY tindex LIMIT 1");
@@ -64,6 +64,8 @@ sub run {
     }
     return;
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 NAME 
 

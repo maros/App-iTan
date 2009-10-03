@@ -19,8 +19,8 @@ has 'index' => (
 
 use Text::Table;
 
-sub run {
-    my ($self) = @_;
+sub execute {
+    my ( $self, $opts, $args ) = @_;
 
     my $sth
         = $self->dbh->prepare(
@@ -51,6 +51,8 @@ sub run {
     
     return;
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 NAME 
 

@@ -12,7 +12,19 @@ with qw(App::iTan::Utils);
 
 use Text::Table;
 
-sub run {
+sub execute {
+    my ( $self, $opts, $args ) = @_;
+    
+    my $tb = $self->get_table();
+    
+    print $tb->title;
+    print $tb->rule('-','+');
+    print $tb->body;
+    
+    return;
+}
+
+sub get_table {
     my ($self) = @_;
     
     my $sth = $self->dbh->prepare("SELECT tindex,imported,used,memo FROM itan WHERE valid = 1 OR used IS NOT NULL ORDER BY imported")
@@ -26,13 +38,11 @@ sub run {
     while (my @line = $sth->fetchrow_array) {
         $tb->add(@line);
     }
-
-    print $tb->title;
-    print $tb->rule('-','+');
-    print $tb->body;
     
-    return;
+    return $tb;
 }
+
+__PACKAGE__->meta->make_immutable;
 
 =head1 NAME 
 

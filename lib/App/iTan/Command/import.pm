@@ -33,8 +33,8 @@ has 'overwrite' => (
 );
 
 
-sub run {
-    my ($self) = @_;
+sub execute {
+    my ( $self, $opts, $args ) = @_;
     
     my @itans = $self->file->slurp(chomp => 1)
         or die ('Cannot read file '.$self->file->stringify);
@@ -85,6 +85,7 @@ sub run {
     return;
 }
 
+__PACKAGE__->meta->make_immutable;
 
 =head1 NAME 
 
