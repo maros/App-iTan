@@ -20,6 +20,7 @@ requires        'Path::Class'           => 0;
 requires        'Text::Table'           => 0;
 
 build_requires  'File::Temp'            => 0;
+build_requires  'Expect'                => 0;
 
 install_script 'bin/itan';
 

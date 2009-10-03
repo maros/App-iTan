@@ -1,23 +1,29 @@
 NAME
-    App::iTan - Manage iTans for online banking
+    App::iTan - Secure management of iTans for online banking from
 
 SYNOPSIS
      # Import a list of itans
-     itan.pl import --file itanlist.txt
-     # Fetch an itan and mark it as used
-     itan.pl get --index 15 --memo "Electricity bill 07/2009"
+     console$ itan import --file itanlist.txt
+
+     # Fetch an itan and mark it as used (after
+     console$ itan get --index 15 --memo "paid rent 09/2009"
+
      # List all itans
-     itan.pl list
+     console$ itan list
 
 DESCRIPTION
-    This command line application facilitates the handling of iTANs (indexed
-    Transaction Numbers) as used by various online banking tools.
+    This command line application facilitates the secure handling of iTANs
+    (indexed Transaction Numbers) as used by various online banking tools.
+
+    iTANs are encrypted using Crypt::Twofish and are by default stored in a
+    SQLite database located at ~/.itan. (Patches for other database vendors
+    welcome)
 
 COMMANDS
   import
     Imports a list of iTans into the database.
 
-     itan.pl import --file IMPORT_FILE [--deletefile] [--overwrite]
+     itan import --file IMPORT_FILE [--deletefile] [--overwrite]
 
     *   file
 
@@ -35,7 +41,7 @@ COMMANDS
 
     *   deletefile
 
-        Delete import file after a successful import
+        Option to delete the import file after a successful import
 
     *   overwrite
 
@@ -44,9 +50,11 @@ COMMANDS
         overwritten.
 
   get
-    Fetches an iTan an marks it as used
+    Fetches an iTan an mark it as used
 
-     itan.pl get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
+     itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
+
+    You will be prompted a password to decrypt the selected iTan.
 
     *   next
 
@@ -63,12 +71,14 @@ COMMANDS
 
     *   memo
 
-        Memo on iTan usage
+        Optional memo on iTan usage
 
   info
     Returns information on the given iTan.
 
-     itan.pl info --index INDEX
+     itan info --index INDEX
+
+    You will be promted a password to decrypt the selected iTan.
 
     *   index
 
@@ -77,13 +87,24 @@ COMMANDS
   list
     List of all either used or still available iTans
 
-     itan.pl list
+     itan list
 
   reset
     Mark all unused iTans as invalid
 
   delete
     Delete all invalid iTans
+
+  help
+     itan help 
+     itan help COMMAND
+
+    Display help text.
+
+  commands
+     itan commands
+
+    Display a list of all available commands
 
 SUPPORT
     Please report any bugs or feature requests to "app-itan@rt.cpan.org", or
@@ -99,7 +120,7 @@ AUTHOR
     
         L<http://www.k-1.com>
 
-COPYRIGHT
+COPYRIGHT & LICENSE
     App::iTan is Copyright (c) 2009, Maroš Kollár - <http://www.k-1.com>
 
     This program is free software; you can redistribute it and/or modify it

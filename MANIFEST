@@ -1,3 +1,4 @@
+bin/itan
 bin/itan.pl
 Changes
 inc/Module/Install.pm
@@ -6,6 +7,7 @@ inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/Scripts.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/App/iTan.pm
@@ -20,13 +22,15 @@ LICENSE
 Makefile.PL
 MANIFEST			This list of files
 META.yml
+README
 t/00_load.t
 t/01_import.t
+t/01_index.t
 t/02_get.t
+t/02_list.t
+t/03_noindex.t
 t/03_utils.t
-t/itanlist_index.txt
-t/itanlist_noindex.txt
-t/testdb
+t/testutils.pm
 xt/perlcritic.t
 xt/pod.t
 xt/podcoverage.t

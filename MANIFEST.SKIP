@@ -1,6 +1,7 @@
 # Module Specific Stuff
 meta/*
 App-iTan-*.*.tar.gz
+t/testdb
 
 # Eclipse stuff
 .includepath
