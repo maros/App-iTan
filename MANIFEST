@@ -1,5 +1,4 @@
 bin/itan
-bin/itan.pl
 Changes
 inc/Module/Install.pm
 inc/Module/Install/Base.pm
@@ -24,12 +23,9 @@ MANIFEST			This list of files
 META.yml
 README
 t/00_load.t
-t/01_import.t
 t/01_index.t
-t/02_get.t
 t/02_list.t
 t/03_noindex.t
-t/03_utils.t
 t/testutils.pm
 xt/perlcritic.t
 xt/pod.t
