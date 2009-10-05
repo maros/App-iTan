@@ -16,16 +16,16 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME 
 
-App::iTan - Secure management of iTans for online banking from
+App::iTan - Secure management of iTans for online banking
 
 =head1 SYNOPSIS
 
  # Import a list of itans
  console$ itan import --file itanlist.txt
 
- # Fetch an itan and mark it as used (after
+ # Fetch an itan and mark it as used (after password prompt)
  console$ itan get --index 15 --memo "paid rent 09/2009"
-
+ 
  # List all itans
  console$ itan list
 
