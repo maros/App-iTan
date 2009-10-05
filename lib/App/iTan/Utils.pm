@@ -2,6 +2,7 @@
 package App::iTan::Utils;
 # ================================================================
 use utf8;
+use strict; # Make cpants happy
 use Moose::Role;
 use 5.0100;
 
