@@ -1,2 +1,8 @@
-1.00 - 03.07.2009
-    * Initial version
+Revision history for Perl module App::iTan
+
+1.01 Sat Oct 3 2009
+    - Fixed dependencies in Makefile
+    - Typos/dist housekeeping
+
+1.00 Sat Oct 3 2009
+    - First stable release
