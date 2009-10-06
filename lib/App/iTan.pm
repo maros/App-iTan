@@ -14,6 +14,8 @@ our $AUTHORITY = 'cpan:MAROS';
 
 __PACKAGE__->meta->make_immutable;
 
+=encoding utf8
+
 =head1 NAME 
 
 App::iTan - Secure management of iTans for online banking
