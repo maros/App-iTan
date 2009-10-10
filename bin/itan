@@ -1,2 +1,5 @@
 #!/perl
-use App::iTan -run;
+use App::iTan;
+
+my $cmd = App::iTan->new;
+$cmd->run
