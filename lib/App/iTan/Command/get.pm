@@ -37,31 +37,46 @@ has 'memo' => (
 sub execute {
     my ( $self, $opts, $args ) = @_;
     
+    my $index;
     if ($self->next) {
-        my ($index) = $self->dbh->selectrow_array("SELECT tindex FROM itan WHERE used IS NULL AND valid = 1 ORDER BY tindex LIMIT 1");
+        ($index) = $self->dbh->selectrow_array("SELECT tindex FROM itan WHERE used IS NULL AND valid = 1 ORDER BY tindex LIMIT 1");
        
         unless (defined $index) {
             say 'No more iTan left';
-        } else {
-            my $tan_data = $self->get($index);
-            my $itan = $self->_decrypt_string($tan_data->{itan});
-            say 'iTAN '.$index.' marked as used';
-            say 'iTAN '.$itan;
-            $self->mark($index,$self->memo);
-        }
-    } elsif ($self->index) {
-        my $tan_data = $self->get($self->index);
-        my $itan = $self->_decrypt_string($tan_data->{itan});
-        say 'iTAN '.$self->index.' marked as used';
-        say 'iTAN '.$itan;
-        $self->mark($self->index,$self->memo);
-        if ($self->lowerinvalid) {
-            $self->dbh->do('UPDATE itan SET valid = 0 WHERE tindex < '.$self->index)
-                 or die "ERROR: Cannot execute: " . $self->dbh->errstr();
+            return;
         }
     } else {
-        say 'Option --index or --next must be set';
+        $index = $self->index;
     }
+    
+    unless ($index) {
+        say 'Option --index or --next must be set';
+    } else {
+        my $tan_data = $self->get($index);
+        my $itan = $self->_decrypt_string($tan_data->{itan});
+        say 'iTAN '.$index.' marked as used';
+        say 'iTAN '.$itan;
+        
+        eval {
+            if ($^O eq 'darwin') {
+                Class::MOP::load_class('Mac::Pasteboard');
+                my $pb = Mac::Pasteboard->new();
+                $pb->clear;
+                $pb->copy($itan);
+            } else {
+                Class::MOP::load_class('Clipboard');
+                Clipboard->copy($itan);
+            }
+            say 'iTan has been coppied to the clipboard';
+        };
+        
+        $self->mark($index,$self->memo);
+        if ($self->lowerinvalid) {
+            $self->dbh->do('UPDATE itan SET valid = 0 WHERE tindex < '.$index)
+                 or die "ERROR: Cannot execute: " . $self->dbh->errstr();
+        }
+    }
+    
     return;
 }
 
