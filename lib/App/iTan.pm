@@ -9,7 +9,7 @@ extends qw(MooseX::App::Cmd);
 with qw(MooseX::Getopt);
 
 use version;
-our $VERSION = version->new('1.01');
+our $VERSION = version->new('1.02');
 our $AUTHORITY = 'cpan:MAROS';
 
 __PACKAGE__->meta->make_immutable;
@@ -77,7 +77,8 @@ indices. When this flag is enabled the duplicate iTans will be overwritten.
 
 =head2 get
 
-Fetches an iTan an mark it as used
+Fetches an iTan an mark it as used. If possible the iTan is also copied
+to the clipboard
 
  itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
 
