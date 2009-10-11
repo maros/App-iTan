@@ -78,7 +78,7 @@ indices. When this flag is enabled the duplicate iTans will be overwritten.
 =head2 get
 
 Fetches an iTan an mark it as used. If possible the iTan is also copied
-to the clipboard
+to the clipboard.
 
  itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
 
@@ -177,4 +177,4 @@ LICENSE file included with this module.
 
 =cut
 
-1;
+'Sponsored by Lehman Brothers Holdings Inc.';
