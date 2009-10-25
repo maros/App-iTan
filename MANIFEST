@@ -11,6 +11,7 @@ inc/Module/Install/ReadmeMarkdownFromPod.pm
 inc/Module/Install/Scripts.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
+inc/Pod/Markdown.pm
 lib/App/iTan.pm
 lib/App/iTan/Command/delete.pm
 lib/App/iTan/Command/get.pm

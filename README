@@ -51,7 +51,7 @@ COMMANDS
 
   get
     Fetches an iTan an mark it as used. If possible the iTan is also copied
-    to the clipboard
+    to the clipboard.
 
      itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
 
