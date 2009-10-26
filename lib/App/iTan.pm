@@ -9,7 +9,7 @@ extends qw(MooseX::App::Cmd);
 with qw(MooseX::Getopt);
 
 use version;
-our $VERSION = version->new('1.02');
+our $VERSION = version->new('1.03');
 our $AUTHORITY = 'cpan:MAROS';
 
 __PACKAGE__->meta->make_immutable;

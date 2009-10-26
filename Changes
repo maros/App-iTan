@@ -1,5 +1,8 @@
 Revision history for Perl module App::iTan
 
+1.03 Sat Oct 10 2009
+    - Fix broken makefile
+
 1.02 Sat Oct 10 2009
     - Copy itan to clipboard (as suggested by Aldo 'Dada' Calpini)
 
