@@ -49,7 +49,7 @@ sub execute {
         $index = $self->index;
     }
     
-    unless ($index) {
+    unless (defined $index) {
         say 'Option --index or --next must be set';
     } else {
         my $tan_data = $self->get($index);
