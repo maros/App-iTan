@@ -34,14 +34,6 @@ Marks the iTan with the given index as used.
 
 =cut
 
-#subtype 'Directory' => as class_type('Path::Class::Dir');
-#
-#coerce 'Directory' => from 'Str' => via {
-#    Path::Class::Dir->new($_);
-#} => from 'ArrayRef[Str]' => via {
-#    Path::Class::Dir->new( @{$_} );
-#};
-
 subtype 'File' => as class_type('Path::Class::File');
 
 coerce 'File' => from 'Str' => via {
@@ -51,7 +43,6 @@ coerce 'File' => from 'Str' => via {
 };
 
 MooseX::Getopt::OptionTypeMap->add_option_type_to_map( 'File' => '=s' );
-#MooseX::Getopt::OptionTypeMap->add_option_type_to_map( 'Directory' => '=s' );
 
 has 'database' => (
     is            => 'ro',
