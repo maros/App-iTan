@@ -52,7 +52,7 @@ sub execute {
             say "... did not import '$line' (could not parse)";
         } else {
             $index = $+{index};
-            $tan   = $self->_crypt_string( $+{tan} );
+            $tan   = $self->crypt_string( $+{tan} );
             if ($index eq '0') {
                 my $nextindex = $self->dbh->selectrow_array("SELECT MAX(tindex) FROM itan WHERE valid = 1");
                 $nextindex ++;
@@ -86,15 +86,4 @@ sub execute {
 }
 
 __PACKAGE__->meta->make_immutable;
-
-=head1 NAME 
-
-App::iTan::Command::import - Import a set of itans
-
-=head1 DESCRIPTION
-
-See L<App::iTan> for detailed documentation
-
-=cut
-
 1;

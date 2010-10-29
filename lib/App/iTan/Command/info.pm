@@ -39,7 +39,7 @@ sub execute {
         $tb->add(
             $tan_data->{tindex},
             $tan_data->{valid},
-            $self->_decrypt_string( $tan_data->{itan} ),
+            $self->decrypt_string( $tan_data->{itan} ),
             $tan_data->{imported},
             $tan_data->{used},
             $tan_data->{memo} );
@@ -53,15 +53,4 @@ sub execute {
 }
 
 __PACKAGE__->meta->make_immutable;
-
-=head1 NAME 
-
-App::iTan::Command::info - Fetch info for a tan index number
-
-=head1 DESCRIPTION
-
-See L<App::iTan> for detailed documentation
-
-=cut
-
 1;

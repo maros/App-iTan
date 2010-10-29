@@ -81,15 +81,4 @@ sub execute {
 }
 
 __PACKAGE__->meta->make_immutable;
-
-=head1 NAME 
-
-App::iTan::Command::get - Fetch a single iTan and mark is as used
-
-=head1 DESCRIPTION
-
-See L<App::iTan> for detailed documentation
-
-=cut
-
 1;

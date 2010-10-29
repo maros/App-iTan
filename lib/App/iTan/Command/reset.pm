@@ -22,16 +22,4 @@ sub execute {
 }
 
 __PACKAGE__->meta->make_immutable;
-
-=head1 NAME 
-
-App::iTan::Command::reset - Mark all unused tans as invalid
-
-=head1 DESCRIPTION
-
-See L<App::iTan> for detailed documentation
-
-=cut
-
-
 1;

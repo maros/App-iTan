@@ -60,15 +60,4 @@ sub get_table {
 }
 
 __PACKAGE__->meta->make_immutable;
-
-=head1 NAME 
-
-App::iTan::Command::list - List all available and used itans
-
-=head1 DESCRIPTION
-
-See L<App::iTan> for detailed documentation
-
-=cut
-
 1;
