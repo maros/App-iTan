@@ -16,33 +16,49 @@ use DateTime;
 
 =head1 NAME
 
-App::iTan::Utils - Utility methods
+App::iTan::Utils - Utility methods role
 
 =head1 METHODS
+
+=head2 Accessors
+
+=head3 database
+
+Path to the database as a L<Path::Class::File> object.
+
+=head3 dbh
+
+Active database handle
+
+=head3 cipher 
+
+L<Crypt::Twofish> cipher object
+
+=head2 Methods
 
 =head3 get
 
  my $tandata = $self->get($index);
- 
+
 Fetches a valid iTan with the given index.
 
 =head3 mark
 
  $self->mark($index[,$memo]);
 
-Marks the iTan with the given index as used.
+=head3 crypt_string
+
+ my $crypt = $self->crypt_string($string);
+
+Encrpyts a string
+
+=head3 decrypt_string
+
+ my $string = $self->decrypt_string($crypt);
+
+Decrpyts a string
 
 =cut
-
-subtype 'File' => as class_type('Path::Class::File');
-
-coerce 'File' => from 'Str' => via {
-    Path::Class::File->new($_);
-} => from 'ArrayRef[Str]' => via {
-    Path::Class::File->new( @{$_} );
-};
-
-MooseX::Getopt::OptionTypeMap->add_option_type_to_map( 'File' => '=s' );
 
 has 'database' => (
     is            => 'ro',
