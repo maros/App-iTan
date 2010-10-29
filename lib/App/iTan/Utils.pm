@@ -121,7 +121,7 @@ sub _build_dbh {
 
         my $password = $self->_get_password();
         $self->cipher(Crypt::Twofish->new($password));
-        my $crypted  = $self->_crypt_string($password);
+        my $crypted  = $self->crypt_string($password);
         
         $dbh->do(
             q[CREATE TABLE itan (tindex INTEGER NOT NULL, itan VARCHAR NOT NULL, imported VARCHAR NOT NULL, used VARCHAR, valid VARCHAR, memo VARCHAR)]
@@ -158,7 +158,7 @@ sub _build_cipher {
     my $stored_password = $self->dbh->selectrow_array("SELECT value FROM system WHERE name = 'password'")   
         or die "ERROR: Cannot query: " . $self->dbh->errstr();
     
-    unless ( $self->_decrypt_string($stored_password) eq $password) {
+    unless ( $self->decrypt_string($stored_password) eq $password) {
         die "ERROR: Invalid password";
     }
     
@@ -181,7 +181,7 @@ sub _parse_date {
     );
 }
 
-sub _crypt_string {
+sub crypt_string {
     my ( $self, $string ) = @_;
 
     use bytes;
@@ -193,7 +193,7 @@ sub _crypt_string {
     return $self->cipher->encrypt($string);
 }
 
-sub _decrypt_string {
+sub decrypt_string {
     my ( $self, $data ) = @_;
 
     my $tan = $self->cipher->decrypt($data);
@@ -255,7 +255,7 @@ sub get {
 
     $data->{imported} = $self->_parse_date($data->{imported});
     $data->{used} = $self->_parse_date($data->{used});
-    #$data->{itan} = $self->_decrypt_tan($data->{itan}); 
+    #$data->{itan} = $self->decrypt_tan($data->{itan}); 
     
     return $data;
 }

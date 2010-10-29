@@ -53,7 +53,7 @@ sub execute {
         say 'Option --index or --next must be set';
     } else {
         my $tan_data = $self->get($index);
-        my $itan = $self->_decrypt_string($tan_data->{itan});
+        my $itan = $self->decrypt_string($tan_data->{itan});
         say 'iTAN '.$index.' marked as used';
         say 'iTAN '.$itan;
         
