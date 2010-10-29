@@ -19,7 +19,7 @@ App::iTan - Secure management of iTans for online banking
 This command line application facilitates the secure handling of iTANs 
 (indexed Transaction Numbers) as used by various online banking tools. 
 
-iTANs are encrypted using [Crypt::Twofish](http://search.cpan.org/search?mode=module&query=Crypt::Twofish) and are by default stored 
+iTANs are encrypted using [Crypt::Twofish](http://search.cpan.org/perldoc?Crypt::Twofish) and are by default stored 
 in a SQLite database located at ~/.itan. (Patches for other database
 vendors welcome)
 
