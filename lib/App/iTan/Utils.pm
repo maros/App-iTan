@@ -63,9 +63,9 @@ Decrpyts a string
 
 has 'database' => (
     is            => 'ro',
+    isa           => 'Path::Class::File',
     traits        => ['Getopt'],
     required      => 1,
-    isa           => 'Path::Class::File',
     coerce        => 1,
     documentation => q[Path to the database file. Defaults to ~/.itan],
     default       => sub {

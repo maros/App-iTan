@@ -12,7 +12,7 @@ with qw(App::iTan::Utils);
 
 has 'file' => (
     is            => 'ro',
-    isa           => 'File',
+    isa           => 'Path::Class::File',
     required      => 1,
     coerce        => 1,
     documentation => q[File with one iTan per line that should be imported],
