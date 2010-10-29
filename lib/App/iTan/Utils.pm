@@ -8,7 +8,8 @@ use 5.0100;
 
 use Path::Class;
 use Params::Coerce;
-use Moose::Util::TypeConstraints;
+use MooseX::Types::Path::Class;
+
 use Term::ReadKey;
 use DBI;
 use Crypt::Twofish;
@@ -64,7 +65,7 @@ has 'database' => (
     is            => 'ro',
     traits        => ['Getopt'],
     required      => 1,
-    isa           => 'File',
+    isa           => 'Path::Class::File',
     coerce        => 1,
     documentation => q[Path to the database file. Defaults to ~/.itan],
     default       => sub {
