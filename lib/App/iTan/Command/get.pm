@@ -59,12 +59,12 @@ sub execute {
         
         eval {
             if ($^O eq 'darwin') {
-                Class::MOP::load_class('Mac::Pasteboard');
+                Class::Load::load_class('Mac::Pasteboard');
                 my $pb = Mac::Pasteboard->new();
                 $pb->clear;
                 $pb->copy($itan);
             } else {
-                Class::MOP::load_class('Clipboard');
+                Class::Load::load_class('Clipboard');
                 Clipboard->copy($itan);
             }
             say 'iTan has been coppied to the clipboard';
