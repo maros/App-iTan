@@ -9,6 +9,7 @@ use 5.0100;
 use Path::Class;
 use Params::Coerce;
 use MooseX::Types::Path::Class;
+use File::HomeDir;
 
 use Term::ReadKey;
 use DBI;
@@ -69,7 +70,7 @@ has 'database' => (
     coerce        => 1,
     documentation => q[Path to the database file. Defaults to ~/.itan],
     default       => sub {
-        return Path::Class::File->new( $ENV{HOME}, '.itan' );
+        return Path::Class::File->new( File::HomeDir->my_home, '.itan' );
     },
 );
 
