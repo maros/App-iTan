@@ -1,6 +1,6 @@
 # Load the Module::Install bundled in ./inc/
 use strict;
-use inc::Module::Install;
+use inc::Module::Install 0.92;
 
 my $from = 'lib/App/iTan.pm';
 
@@ -24,14 +24,15 @@ requires        'Text::Table'           => 0;
 requires        'Crypt::Twofish'        => 0;
 requires        'Term::ReadKey'         => 0;
 requires        'MooseX::Types::Path::Class'=> 0;
+requires        'File::HomeDir'         => 0;
 
 build_requires  'File::Temp'            => 0;
 build_requires  'Expect'                => 0;
 
-#author_requires 'Test::Pod'             => '1.14';
-#author_requires 'Test::Pod::Coverage'   => '1.04';
-#author_requires 'Test::Perl::Critic'    => 0;
-#author_requires 'Module::Install::ReadmeFromPod'        => 0;
+author_requires 'Test::Pod'             => '1.14';
+author_requires 'Test::Pod::Coverage'   => '1.04';
+author_requires 'Test::Perl::Critic'    => 0;
+author_requires 'Module::Install::ReadmeFromPod'        => 0;
 
 if ($^O eq 'darwin') {
     recommends 'Mac::Pasteboard';

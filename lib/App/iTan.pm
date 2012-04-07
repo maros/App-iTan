@@ -162,19 +162,18 @@ on your report as I make changes.
     CPAN ID: MAROS
     maros [at] k-1.com
     
-    L<http://www.k-1.com>
+    http://www.k-1.com
 
-=head1 COPYRIGHT & LICENSE
+=head1 COPYRIGHT
 
-App::iTan is Copyright (c) 2009, Maroš Kollár 
+App::iTan is Copyright (c) 2012 Maroš Kollár 
 - L<http://www.k-1.com>
 
-This program is free software; you can redistribute it and/or modify it under 
-the same terms as Perl itself.
+=head1 LICENCE
 
-The full text of the license can be found in the
-LICENSE file included with this module.
+This library is free software, you can redistribute it and/or modify
+it under the same terms as Perl itself.
 
-=cut
+=end
 
 'Sponsored by Lehman Brothers Holdings Inc.';
