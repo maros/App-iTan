@@ -5,11 +5,11 @@ use utf8;
 use Moose;
 use 5.0100;
 
-extends qw(MooseX::App::Cmd);
-with qw(MooseX::Getopt);
+use MooseX::App qw(Color);
 
 use version;
 our $VERSION = version->new('1.03');
+app_namespace 'App::iTan::Command';
 our $AUTHORITY = 'cpan:MAROS';
 
 __PACKAGE__->meta->make_immutable;

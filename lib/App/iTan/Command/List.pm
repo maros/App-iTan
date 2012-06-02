@@ -1,5 +1,5 @@
 # ================================================================
-package App::iTan::Command::list;
+package App::iTan::Command::List;
 # ================================================================
 use utf8;
 use Moose;
@@ -7,20 +7,20 @@ use 5.0100;
 
 our $VERSION = $App::iTan::VERSION;
 
-use Text::Table;
-use Moose::Util::TypeConstraints;
-
-extends qw(MooseX::App::Cmd::Command);
+use MooseX::App::Command;
 with qw(App::iTan::Utils);
+
+use Text::Table;
+use Moose::Util::TypeConstraints qw(enum);
 
 our @SORTFIELDS = qw(tindex imported used);
 
-has 'sort' => (
+option 'sort' => (
     is            => 'ro',
     isa           => enum(\@SORTFIELDS),
     required      => 1,
     default       => $SORTFIELDS[0],
-    documentation => q[Sort field (].(join ',',@SORTFIELDS).q[)],
+    documentation => q[Set list sorting (].(join ',',@SORTFIELDS).q[)],
 );
 
 sub execute {
@@ -61,3 +61,37 @@ sub get_table {
 
 __PACKAGE__->meta->make_immutable;
 1;
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+App::iTan::Command::List - List of all iTANs
+
+=head1 SYNOPSIS
+
+ itan list [--sort (tindex imported used)]
+
+=head1 DESCRIPTION
+
+List of all either used or still available iTANs.
+
+=head1 OPTIONS
+
+=head2 sort
+
+Set list sorting. Available options are
+
+=over
+
+=item * tindex
+
+=item * imported
+
+=item * used
+
+=back
+
+=cut

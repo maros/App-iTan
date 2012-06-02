@@ -1,5 +1,5 @@
 # ================================================================
-package App::iTan::Command::import;
+package App::iTan::Command::Import;
 # ================================================================
 use utf8;
 use Moose;
@@ -7,25 +7,25 @@ use 5.0100;
 
 our $VERSION = $App::iTan::VERSION;
 
-extends qw(MooseX::App::Cmd::Command);
+use MooseX::App::Command;
 with qw(App::iTan::Utils);
 
-has 'file' => (
+option 'file' => (
     is            => 'ro',
     isa           => 'Path::Class::File',
     required      => 1,
     coerce        => 1,
-    documentation => q[File with one iTan per line that should be imported],
+    documentation => q[Path to a file containing the iTANs to be imported],
 );
 
-has 'deletefile' => (
+option 'deletefile' => (
     is      => 'ro',
     isa     => 'Bool',
     default => 0,
     documentation => q[Delete import file after a successfull import],
 );
 
-has 'overwrite' => (
+option 'overwrite' => (
     is      => 'ro',
     isa     => 'Bool',
     default => 0,
@@ -87,3 +87,49 @@ sub execute {
 
 __PACKAGE__->meta->make_immutable;
 1;
+
+=pod
+
+=encoding utf8
+
+=head1 NAME
+
+App::iTan::Command::Import - Imports a list of iTans into the database
+
+=head1 SYNOPSIS
+
+ itan import --file IMPORT_FILE [--deletefile] [--overwrite]
+
+=head1 DESCRIPTION
+
+Imports a list of iTans into the database form a file with one iTAN per line.
+
+The file must contain two columns (separated by any non numeric characters). 
+The first  column must be the index number. The second column must be the tan 
+number. If your online banking application does not use index numbers just set
+the first column to zero.
+
+ 10 434167
+ 11 937102
+ OR
+ 0 320791
+ 0 823602
+
+=head1 OPTIONS
+
+=head2 file
+
+Path to a file containing the iTANs to be imported. 
+
+=head2 deletefile
+
+Delete import file after a successfull import
+
+=head2 overwrite 
+
+Overwrite duplicate index numbers.
+
+Index numbers must be unique. Default behaviour is to skip duplicate iTan
+indices. When this flag is enabled the duplicate iTans will be overwritten.
+
+=cut

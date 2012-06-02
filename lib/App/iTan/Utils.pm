@@ -4,6 +4,7 @@ package App::iTan::Utils;
 use utf8;
 use strict; # Make cpants happy
 use Moose::Role;
+use MooseX::App::Role;
 use 5.0100;
 
 use Path::Class;
@@ -62,13 +63,12 @@ Decrpyts a string
 
 =cut
 
-has 'database' => (
+option 'database' => (
     is            => 'ro',
     isa           => 'Path::Class::File',
-    traits        => ['Getopt'],
     required      => 1,
     coerce        => 1,
-    documentation => q[Path to the database file. Defaults to ~/.itan],
+    documentation => q[Path to the iTAN database file. Defaults to ~/.itan],
     default       => sub {
         return Path::Class::File->new( File::HomeDir->my_home, '.itan' );
     },
@@ -76,7 +76,6 @@ has 'database' => (
 
 has 'dbh' => (
     is      => 'ro',
-    traits  => ['NoGetopt'],
     lazy    => 1,
     isa     => 'DBI::db',
     builder => '_build_dbh'
@@ -84,7 +83,6 @@ has 'dbh' => (
 
 has 'cipher' => (
     is      => 'rw',
-    traits  => ['NoGetopt'],
     lazy    => 1,
     isa     => 'Crypt::Twofish',
     builder => '_build_cipher'
