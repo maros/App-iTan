@@ -108,7 +108,10 @@ sub _build_dbh {
 
 
     my @list;
-    my $sth = $dbh->prepare('SELECT name FROM sqlite_master WHERE type=? ORDER BY name');
+    my $sth = $dbh->prepare('SELECT name 
+        FROM sqlite_master 
+        WHERE type=? 
+        ORDER BY name');
     $sth->execute('table');
     while (my $name = $sth->fetchrow_array) {
         push @list,$name;
@@ -123,11 +126,21 @@ sub _build_dbh {
         my $crypted  = $self->crypt_string($password);
         
         $dbh->do(
-            q[CREATE TABLE itan (tindex INTEGER NOT NULL, itan VARCHAR NOT NULL, imported VARCHAR NOT NULL, used VARCHAR, valid VARCHAR, memo VARCHAR)]
+            q[CREATE TABLE itan (
+                tindex INTEGER NOT NULL, 
+                itan VARCHAR NOT NULL, 
+                imported VARCHAR NOT NULL, 
+                used VARCHAR, 
+                valid VARCHAR, 
+                memo VARCHAR
+            )]
         ) or die "ERROR: Cannot execute: " . $dbh->errstr();
         
         $dbh->do(
-            q[CREATE TABLE system (name VARCHAR NOT NULL, value VARCHAR NOT NULL)]
+            q[CREATE TABLE system (
+                name VARCHAR NOT NULL, 
+                value VARCHAR NOT NULL
+            )]
         ) or die "ERROR: Cannot execute: " . $dbh->errstr();
         
         my $sth = $dbh->prepare(q[INSERT INTO system (name,value) VALUES (?,?)]);
@@ -168,8 +181,17 @@ sub _parse_date {
     my ( $self, $date ) = @_;
 
     return
-        unless defined $date && $date
-            =~ m/^(?<year>\d{4})\/(?<month>\d{1,2})\/(?<day>\d{1,2})\s(?<hour>\d{1,2}):(?<minute>\d{1,2})$/;
+        unless defined $date && $date =~ m/^
+            (?<year>\d{4})
+            \/
+            (?<month>\d{1,2})
+            \/
+            (?<day>\d{1,2})
+            \s
+            (?<hour>\d{1,2})
+            :
+            (?<minute>\d{1,2})
+            $/x;
 
     return DateTime->new(
         year   => $+{year},
@@ -208,7 +230,7 @@ sub _get_password {
     my $password;
 
     ReadMode 2;
-    say 'Please enter a password:';
+    say 'Please enter your password:';
     while ( not defined( $password = ReadLine(-1) ) ) {
         # no key pressed yet
     }
@@ -241,7 +263,15 @@ sub _get_password {
 sub get {
     my ($self,$index) = @_;
     
-    my $sth = $self->dbh->prepare('SELECT tindex,itan,imported,used,memo FROM itan WHERE tindex = ? AND valid = 1')
+    my $sth = $self->dbh->prepare('SELECT 
+            tindex,
+            itan,
+            imported,
+            used,
+            memo 
+        FROM itan 
+        WHERE tindex = ? 
+        AND valid = 1')
         or die "ERROR: Cannot prepare: " . $self->dbh->errstr();
     $sth->execute($index)
         or die "ERROR: Cannot execute: " . $sth->errstr();
