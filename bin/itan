@@ -1,8 +1,7 @@
 #!/perl
 use App::iTan;
-
-my $cmd = App::iTan->new;
-$cmd->run;
+my $cmd = App::iTan->new_with_command;
+$cmd->execute;
 
 =head1 NAME
 
