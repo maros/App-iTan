@@ -6,9 +6,9 @@ use Test::More tests => 8;
 
 use_ok( 'App::iTan' );
 use_ok( 'App::iTan::Utils' );
-use_ok( 'App::iTan::Command::get' );
-use_ok( 'App::iTan::Command::import' );
-use_ok( 'App::iTan::Command::info' );
-use_ok( 'App::iTan::Command::list' );
-use_ok( 'App::iTan::Command::reset' );
-use_ok( 'App::iTan::Command::delete' );
+use_ok( 'App::iTan::Command::Get' );
+use_ok( 'App::iTan::Command::Import' );
+use_ok( 'App::iTan::Command::Info' );
+use_ok( 'App::iTan::Command::List' );
+use_ok( 'App::iTan::Command::Reset' );
+use_ok( 'App::iTan::Command::Delete' );

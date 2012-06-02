@@ -75,7 +75,7 @@ sub run_command {
     $exp->spawn(join ' ',@command);
     $exp->expect(
         100,
-        [   qr/Please \s enter \s a \s password:/x,
+        [   qr/Please \s enter \s your \s password:/x,
             sub {
                 my $self = shift;
                 $self->send(test_password."\n");
