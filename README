@@ -1,12 +1,12 @@
 NAME
-    App::iTan - Secure management of iTans for online banking
+    App::iTan - Secure management of iTANs for online banking
 
 SYNOPSIS
      # Import a list of itans
      console$ itan import --file itanlist.txt
-
+ 
      # Fetch an itan and mark it as used (after password prompt)
-     console$ itan get --index 15 --memo "paid rent 09/2009"
+     console$ itan get --index 15 --memo "paid rent 06/2012"
  
      # List all itans
      console$ itan list
@@ -20,92 +20,33 @@ DESCRIPTION
     welcome)
 
 COMMANDS
-  import
-    Imports a list of iTans into the database.
+    *   delete
 
-     itan import --file IMPORT_FILE [--deletefile] [--overwrite]
+        Delete all invalid iTANs App::iTan::Command::Delete
 
-    *   file
+    *   get
 
-        Path to a file containing the iTans to be imported. The file must
-        contain two columns (separated by any non numeric characters). The
-        first column must be the index number. The second column must be the
-        tan number. If your online banking appication does not use index
-        numbers just set the first column to zero.
+        Fetches selected iTAN App::iTan::Command::Get
 
-         10 434167
-         11 937102
-         OR
-         0 320791
-         0 823602
+    *   help
 
-    *   deletefile
+        Prints this usage information App::iTan::Command::Help
 
-        Option to delete the import file after a successful import
+    *   import
 
-    *   overwrite
+        Imports a list of iTans into the database App::iTan::Command::Import
 
-        Index numbers must be unique. Default behaviour is to skip duplicate
-        iTan indices. When this flag is enabled the duplicate iTans will be
-        overwritten.
+    *   info
 
-  get
-    Fetches an iTan an mark it as used. If possible the iTan is also copied
-    to the clipboard.
+        Info about the selected iTAN App::iTan::Command::info
 
-     itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
+    *   list
 
-    You will be prompted a password to decrypt the selected iTan.
+        List of all iTANs App::iTan::Command::List
 
-    *   next
+    *   reset
 
-        Fetches the next available iTan
-
-    *   index
-
-        Fetches the iTan with the given index
-
-    *   lowerinvalid
-
-        Marks all iTans lower than --index as invalid (Only in conjunction
-        with --index).
-
-    *   memo
-
-        Optional memo on iTan usage
-
-  info
-    Returns information on the given iTan.
-
-     itan info --index INDEX
-
-    You will be promted a password to decrypt the selected iTan.
-
-    *   index
-
-        Fetches the iTan with the given index
-
-  list
-    List of all either used or still available iTans
-
-     itan list
-
-  reset
-    Mark all unused iTans as invalid
-
-  delete
-    Delete all invalid iTans
-
-  help
-     itan help 
-     itan help COMMAND
-
-    Display help text.
-
-  commands
-     itan commands
-
-    Display a list of all available commands
+        Reset unused iTANs App::iTan::Command::Reset
 
 SUPPORT
     Please report any bugs or feature requests to "app-itan@rt.cpan.org", or
@@ -119,14 +60,21 @@ AUTHOR
         CPAN ID: MAROS
         maros [at] k-1.com
     
-        L<http://www.k-1.com>
+        http://www.k-1.com
 
-COPYRIGHT & LICENSE
-    App::iTan is Copyright (c) 2009, Maroš Kollár - <http://www.k-1.com>
+COPYRIGHT
+    App::iTan is Copyright (c) 2012 Maroš Kollár - <http://www.k-1.com>
 
-    This program is free software; you can redistribute it and/or modify it
+LICENCE
+    This library is free software, you can redistribute it and/or modify it
     under the same terms as Perl itself.
 
-    The full text of the license can be found in the LICENSE file included
-    with this module.
+    'Sponsored by Lehman Brothers Holdings Inc.';
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 110:
+        '=end' without a target?
 

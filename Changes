@@ -1,6 +1,13 @@
 Revision history for Perl module App::iTan
 
 1.03 Sat Oct 10 2009
+    - Also accept '0' as tan index
+    - Make list output sortable
+    - Dist cleanup (no more M::I::ReadmeMarkdownFromPod and version,
+      use Class::Load, remove dead code, ...)
+    - Switch from MooseX::App::Cmd to MooseX::App
+
+1.03 Sat Oct 10 2009
     - Fix broken makefile
 
 1.02 Sat Oct 10 2009
