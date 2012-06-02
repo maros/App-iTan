@@ -7,9 +7,9 @@ use 5.0100;
 
 use MooseX::App qw(Color);
 
-use version;
-our $VERSION = version->new('1.03');
 app_namespace 'App::iTan::Command';
+
+our $VERSION = '1.03';
 our $AUTHORITY = 'cpan:MAROS';
 
 __PACKAGE__->meta->make_immutable;
@@ -18,15 +18,15 @@ __PACKAGE__->meta->make_immutable;
 
 =head1 NAME 
 
-App::iTan - Secure management of iTans for online banking
+App::iTan - Secure management of iTANs for online banking
 
 =head1 SYNOPSIS
 
  # Import a list of itans
  console$ itan import --file itanlist.txt
-
+ 
  # Fetch an itan and mark it as used (after password prompt)
- console$ itan get --index 15 --memo "paid rent 09/2009"
+ console$ itan get --index 15 --memo "paid rent 06/2012"
  
  # List all itans
  console$ itan list
@@ -42,111 +42,44 @@ vendors welcome)
 
 =head1 COMMANDS
 
-=head2 import
+=over 
 
-Imports a list of iTans into the database. 
+=item * delete  
 
- itan import --file IMPORT_FILE [--deletefile] [--overwrite]
+Delete all invalid iTANs
+L<App::iTan::Command::Delete>
 
-=over
+=item * get     
 
-=item * file
+Fetches selected iTAN
+L<App::iTan::Command::Get>
 
-Path to a file containing the iTans to be imported. The file must contain
-two columns (separated by any non numeric characters). The first 
-column must be the index number. The second column must be the tan 
-number. If your online banking appication does not use index numbers just set
-the first column to zero.
+=item * help    
 
- 10 434167
- 11 937102
- OR
- 0 320791
- 0 823602
+Prints this usage information
+L<App::iTan::Command::Help>
 
-=item * deletefile
+=item * import  
 
-Option to delete the import file after a successful import
+Imports a list of iTans into the database
+L<App::iTan::Command::Import>
 
-=item * overwrite 
+=item * info    
 
-Index numbers must be unique. Default behaviour is to skip duplicate iTan
-indices. When this flag is enabled the duplicate iTans will be overwritten.
+Info about the selected iTAN
+L<App::iTan::Command::info>
 
-=back
+=item * list
 
-=head2 get
+List of all iTANs
+L<App::iTan::Command::List>
 
-Fetches an iTan an mark it as used. If possible the iTan is also copied
-to the clipboard.
+=item * reset   
 
- itan get [--next] OR [--index INDEX [--lowerinactive]]  [--memo MEMO]
-
-You will be prompted a password to decrypt the selected iTan.
-
-=over
-
-=item * next
-
-Fetches the next available iTan
-
-=item * index
-
-Fetches the iTan with the given index
-
-=item * lowerinvalid
-
-Marks all iTans lower than --index as invalid (Only in conjunction with
---index).
-
-=item * memo
-
-Optional memo on iTan usage
+Reset unused iTANs
+L<App::iTan::Command::Reset>
 
 =back
-
-=head2 info
-
-Returns information on the given iTan.
-
- itan info --index INDEX
-
-You will be promted a password to decrypt the selected iTan.
-
-=over
-
-=item * index
-
-Fetches the iTan with the given index
-
-=back
-
-=head2 list
-
-List of all either used or still available iTans
-
- itan list
-
-=head2 reset
-
-Mark all unused iTans as invalid
-
-=head2 delete
-
-Delete all invalid iTans
-
-=head2 help
-
- itan help 
- itan help COMMAND
-
-Display help text.
-
-=head2 commands
-
- itan commands 
-
-Display a list of all available commands
 
 =head1 SUPPORT
 
