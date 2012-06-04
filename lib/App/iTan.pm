@@ -64,7 +64,7 @@ L<App::iTan::Command::Help>
 Imports a list of iTans into the database
 L<App::iTan::Command::Import>
 
-=item * info    
+=item * info
 
 Info about the selected iTAN
 L<App::iTan::Command::info>
@@ -107,6 +107,6 @@ App::iTan is Copyright (c) 2012 Maroš Kollár
 This library is free software, you can redistribute it and/or modify
 it under the same terms as Perl itself.
 
-=end
+=cut
 
 'Sponsored by Lehman Brothers Holdings Inc.';
