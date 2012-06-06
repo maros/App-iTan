@@ -1,6 +1,6 @@
 Revision history for Perl module App::iTan
 
-1.03 Sat Oct 10 2009
+1.04 Sun Jun 03 2012
     - Also accept '0' as tan index
     - Make list output sortable
     - Dist cleanup (no more M::I::ReadmeMarkdownFromPod and version,
