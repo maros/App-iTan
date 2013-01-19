@@ -2,7 +2,6 @@
 package App::iTan::Utils;
 # ================================================================
 use utf8;
-use strict; # Make cpants happy
 use Moose::Role;
 use MooseX::App::Role;
 use 5.0100;
@@ -88,12 +87,12 @@ has 'cipher' => (
     builder => '_build_cipher'
 );
 
-sub DEMOLISH {
-    my ($self) = @_;
-
-    $self->dbh->disconnect();
-    return;
-}
+#sub DEMOLISH {
+#    my ($self) = @_;
+#
+#    $self->dbh->disconnect();
+#    return;
+#}
 
 sub _build_dbh {
     my ($self) = @_;
