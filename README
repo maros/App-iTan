@@ -69,12 +69,3 @@ LICENCE
     This library is free software, you can redistribute it and/or modify it
     under the same terms as Perl itself.
 
-    'Sponsored by Lehman Brothers Holdings Inc.';
-
-POD ERRORS
-    Hey! The above document had some coding errors, which are explained
-    below:
-
-    Around line 110:
-        '=end' without a target?
-
