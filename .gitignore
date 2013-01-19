@@ -12,3 +12,4 @@ Makefile.old
 App-iTan-*
 cover_db
 t/testdb
+MYMETA.*
