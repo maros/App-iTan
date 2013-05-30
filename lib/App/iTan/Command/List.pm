@@ -40,7 +40,7 @@ sub get_table {
     
     my $sort = $self->sort;
     $sort .= ','.$SORTFIELDS[0]
-        unless $SORTFIELDS[0] ~~ $sort;
+        unless $SORTFIELDS[0] eq $sort;
     my $sth = $self->dbh->prepare("SELECT tindex,imported,used,memo 
         FROM itan 
         WHERE valid = 1 OR used IS NOT NULL 
