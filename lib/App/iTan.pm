@@ -9,7 +9,7 @@ use MooseX::App qw(Color);
 
 app_namespace 'App::iTan::Command';
 
-our $VERSION = '1.04';
+our $VERSION = '1.05';
 our $AUTHORITY = 'cpan:MAROS';
 
 __PACKAGE__->meta->make_immutable;
