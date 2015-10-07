@@ -12,7 +12,6 @@ inc/Module/Install/Scripts.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/App/iTan.pm
-lib/App/iTan/Command/delete.pm
 lib/App/iTan/Command/Delete.pm
 lib/App/iTan/Command/Get.pm
 lib/App/iTan/Command/Import.pm
@@ -24,8 +23,6 @@ LICENSE
 Makefile.PL
 MANIFEST			This list of files
 META.yml
-MYMETA.json
-MYMETA.yml
 README
 t/00_load.t
 t/01_index.t
