@@ -5,8 +5,6 @@ use utf8;
 use Moose;
 use 5.0100;
 
-our $VERSION = $App::iTan::VERSION;
-
 use MooseX::App::Command;
 with qw(App::iTan::Utils);
 
