@@ -16,7 +16,7 @@ requires        'DBI'                               => 0;
 requires        'DBD::SQLite'                       => 0;
 requires        'DateTime'                          => 0;
 requires        'Moose'                             => 0;
-requires        'MooseX::App'                       => '1.04';
+requires        'MooseX::App'                       => '1.34';
 requires        'Params::Coerce'                    => 0;
 requires        'Path::Class'                       => 0;
 requires        'Text::Table'                       => 0;
@@ -25,6 +25,7 @@ requires        'Term::ReadKey'                     => 0;
 requires        'MooseX::Types::Path::Class'        => 0;
 requires        'File::HomeDir'                     => 0;
 
+build_requires  'Test::NoWarnings'                  => 0;
 build_requires  'File::Temp'                        => 0;
 build_requires  'Expect'                            => 0;
 
