@@ -31,7 +31,7 @@ sub test_password {
 sub test_dbh {
     return DBI->connect("dbi:SQLite:dbname=" .testutils::test_db(),"","",{
         RaiseError => 1,
-    }) or die "ERROR: Cannot connect: " . $DBI::errstr;
+    });
 }
 
 sub run_import {
