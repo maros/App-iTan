@@ -1,5 +1,8 @@
 Revision history for Perl module App::iTan
 
+1.06 Sat Apr 2 2016
+    - Dist housekeeping
+
 1.05 Mon Jan 27 2014
     - Dist housekeeping
     - Fix warning
