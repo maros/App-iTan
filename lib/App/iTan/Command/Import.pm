@@ -20,7 +20,7 @@ option 'deletefile' => (
     is      => 'ro',
     isa     => 'Bool',
     default => 0,
-    documentation => q[Delete import file after a successfull import],
+    documentation => q[Delete import file after a successful import],
 );
 
 option 'overwrite' => (
@@ -121,7 +121,7 @@ Path to a file containing the iTANs to be imported.
 
 =head2 deletefile
 
-Delete import file after a successfull import
+Delete import file after a successful import
 
 =head2 overwrite
 
